@@ -6,7 +6,7 @@
         xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
         xmlns:local="clr-namespace:SheduleHelper.WpfApp"
         mc:Ignorable="d" MinWidth="600" MinHeight="320"
-        WindowStyle="None" ResizeMode="CanResize" AllowsTransparency="False"
+        WindowStyle="None" ResizeMode="CanResize"
         Background="{DynamicResource LayerBackgroundFloatingBrush}"
         
         Title="MainWindow" Height="450" Width="800">

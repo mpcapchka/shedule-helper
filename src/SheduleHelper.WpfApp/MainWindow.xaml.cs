@@ -33,6 +33,9 @@ namespace SheduleHelper.WpfApp
         {
             IntPtr hwnd = new WindowInteropHelper(this).Handle;
 
+            IntPtr newStyle = new IntPtr(WS_CAPTION | WS_SIZEBOX | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU);
+            SetWindowLongPtr64(hwnd, GWL_STYLE, newStyle);
+
             // IMPORTANT: Set to 0 to ENABLE transitions (confusing API naming!)
             int value = 0;
             DwmSetWindowAttribute(hwnd, DWMWA_TRANSITIONS_FORCEDISABLED, ref value, sizeof(int));
@@ -174,6 +177,17 @@ namespace SheduleHelper.WpfApp
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern bool GetMonitorInfo(IntPtr hMonitor, ref MONITORINFO lpmi);
+
+        // P/Invoke declarations:
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
+        static extern IntPtr SetWindowLongPtr64(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+        const int GWL_STYLE = -16;
+        // Style flags:
+        const long WS_CAPTION = 0x00C00000L;
+        const long WS_SIZEBOX = 0x00040000L;
+        const long WS_MINIMIZEBOX = 0x00020000L;
+        const long WS_MAXIMIZEBOX = 0x00010000L;
+        const long WS_SYSMENU = 0x00080000L;
         #endregion
 
         #region Native Methods - DWM (Desktop Window Manager)
