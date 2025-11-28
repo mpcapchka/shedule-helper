@@ -106,8 +106,12 @@
 
         <!-- rest of UI -->
         <Border Grid.Row="1">
-            <Button x:Name="SwitchThemeButton" Content="Switch Theme" VerticalAlignment="Center" HorizontalAlignment="Center"
-                    Click="SwitchThemeButton_Click"/>
+            <StackPanel Orientation="Vertical"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button x:Name="SwitchThemeButton" Content="Switch Theme"
+                        Click="SwitchThemeButton_Click"/>
+                <Button Style="{StaticResource PrimaryButtonStyle}" Content="PrimaryButton"/>
+            </StackPanel>
+            
         </Border>
     </Grid>
 </Window>
