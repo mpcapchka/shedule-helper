@@ -108,36 +108,33 @@
         <Grid Grid.Row="1">
             <!-- Main Content Area -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                <TextBlock Text="CheckBox Samples" FontSize="20" FontWeight="SemiBold"
+                <TextBlock Text="RadioButton Samples" FontSize="20" FontWeight="SemiBold"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,20"/>
 
-                <!-- Two-State CheckBoxes -->
-                <TextBlock Text="Two-State CheckBoxes:" FontWeight="Medium"
+                <!-- Group 1: Basic RadioButtons -->
+                <TextBlock Text="Choose your favorite color:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,8"/>
-                <CheckBox Content="Unchecked CheckBox" Margin="0,4"/>
-                <CheckBox Content="Checked CheckBox" IsChecked="True" Margin="0,4"/>
-                <CheckBox Content="Disabled Unchecked" IsEnabled="False" Margin="0,4"/>
-                <CheckBox Content="Disabled Checked" IsChecked="True" IsEnabled="False" Margin="0,4"/>
+                <RadioButton Content="Red" GroupName="Colors" Margin="0,4"/>
+                <RadioButton Content="Green" GroupName="Colors" IsChecked="True" Margin="0,4"/>
+                <RadioButton Content="Blue" GroupName="Colors" Margin="0,4"/>
+                <RadioButton Content="Yellow" GroupName="Colors" Margin="0,4"/>
 
-                <!-- Three-State CheckBoxes -->
-                <TextBlock Text="Three-State CheckBoxes:" FontWeight="Medium"
+                <!-- Group 2: Size Options -->
+                <TextBlock Text="Select size:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <CheckBox Content="Unchecked" IsThreeState="True" Margin="0,4"/>
-                <CheckBox Content="Checked" IsChecked="True" IsThreeState="True" Margin="0,4"/>
-                <CheckBox Content="Indeterminate" IsChecked="{x:Null}" IsThreeState="True" Margin="0,4"/>
-                <CheckBox Content="Disabled Indeterminate" IsChecked="{x:Null}" IsThreeState="True" IsEnabled="False" Margin="0,4"/>
+                <RadioButton Content="Small" GroupName="Size" Margin="0,4"/>
+                <RadioButton Content="Medium" GroupName="Size" IsChecked="True" Margin="0,4"/>
+                <RadioButton Content="Large" GroupName="Size" Margin="0,4"/>
 
-                <!-- Button Samples -->
-                <TextBlock Text="Button Samples:" FontWeight="Medium"
+                <!-- Group 3: Disabled Options -->
+                <TextBlock Text="Disabled states:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <StackPanel Orientation="Horizontal" Margin="0,4">
-                    <Button Content="Default Button" Margin="0,0,8,0"/>
-                    <Button Style="{StaticResource PrimaryButtonStyle}" Content="Primary Button"/>
-                </StackPanel>
+                <RadioButton Content="Disabled Unchecked" GroupName="Disabled" IsEnabled="False" Margin="0,4"/>
+                <RadioButton Content="Disabled Checked" GroupName="Disabled" IsChecked="True" IsEnabled="False" Margin="0,4"/>
             </StackPanel>
 
             <!-- Theme Switch Button in Bottom-Right Corner -->
@@ -147,8 +144,6 @@
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
                     Margin="16"/>
-            
-            
         </Grid>
     </Grid>
 </Window>

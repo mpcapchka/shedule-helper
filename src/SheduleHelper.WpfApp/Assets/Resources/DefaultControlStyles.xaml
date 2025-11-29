@@ -477,4 +477,187 @@
     </Style>
 
     <Style TargetType="CheckBox" BasedOn="{StaticResource DefaultCheckBoxStyle}"/>
+
+    <!-- ================================================ -->
+    <!--   DEFAULT RADIOBUTTON STYLE                     -->
+    <!--   Material Design RadioButton                    -->
+    <!-- ================================================ -->
+
+    <Style x:Key="DefaultRadioButtonStyle" TargetType="{x:Type RadioButton}">
+        <!-- Base Properties -->
+        <Setter Property="Foreground" Value="{DynamicResource DefaultControlForegroundDefaultBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultControlBorderDefaultBrush}"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="8,0,0,0"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- RadioButton Visual -->
+                        <Grid Width="18" Height="18" VerticalAlignment="Center">
+                            <!-- Outer Circle (Unchecked Border) -->
+                            <Ellipse x:Name="OuterCircle"
+                                     Stroke="{TemplateBinding BorderBrush}"
+                                     StrokeThickness="{TemplateBinding BorderThickness}"
+                                     Fill="{TemplateBinding Background}"
+                                     SnapsToDevicePixels="True"/>
+
+                            <!-- Checked Outer Circle -->
+                            <Ellipse x:Name="CheckedOuterCircle"
+                                     Stroke="{DynamicResource AccentPrimaryBrush}"
+                                     StrokeThickness="2"
+                                     Fill="Transparent"
+                                     Opacity="0"
+                                     SnapsToDevicePixels="True"/>
+
+                            <!-- Inner Circle (Checked Indicator) -->
+                            <Ellipse x:Name="InnerCircle"
+                                     Fill="{DynamicResource AccentPrimaryBrush}"
+                                     Width="8"
+                                     Height="8"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Opacity="0"
+                                     SnapsToDevicePixels="True"/>
+
+                            <!-- Focus Circle -->
+                            <Ellipse x:Name="FocusCircle"
+                                     Stroke="{DynamicResource AccentPrimaryBrush}"
+                                     StrokeThickness="2"
+                                     Fill="Transparent"
+                                     Opacity="0"
+                                     IsHitTestVisible="False"
+                                     SnapsToDevicePixels="True"/>
+                        </Grid>
+
+                        <!-- Content -->
+                        <ContentPresenter x:Name="ContentPresenter"
+                                          Grid.Column="1"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="OuterCircle" Property="Stroke"
+                                    Value="{DynamicResource DefaultControlBorderHoverBrush}"/>
+                        </Trigger>
+
+                        <!-- Pressed State -->
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="OuterCircle" Property="Stroke"
+                                    Value="{DynamicResource DefaultControlBorderPressedBrush}"/>
+                        </Trigger>
+
+                        <!-- Checked State -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="CheckedOuterCircle" Property="Opacity" Value="1"/>
+                            <Setter TargetName="InnerCircle" Property="Opacity" Value="1"/>
+                            <Setter TargetName="OuterCircle" Property="Opacity" Value="0"/>
+                        </Trigger>
+
+                        <!-- Checked + Hover -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CheckedOuterCircle" Property="Stroke"
+                                    Value="{DynamicResource AccentPrimaryHoverBrush}"/>
+                            <Setter TargetName="InnerCircle" Property="Fill"
+                                    Value="{DynamicResource AccentPrimaryHoverBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Checked + Pressed -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsPressed" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CheckedOuterCircle" Property="Stroke"
+                                    Value="{DynamicResource AccentPrimaryPressedBrush}"/>
+                            <Setter TargetName="InnerCircle" Property="Fill"
+                                    Value="{DynamicResource AccentPrimaryPressedBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Focus State -->
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusCircle"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusCircle"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Disabled State -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="OuterCircle" Property="Fill"
+                                    Value="{DynamicResource DefaultControlBackgroundDisabledBrush}"/>
+                            <Setter TargetName="OuterCircle" Property="Stroke"
+                                    Value="{DynamicResource DefaultControlBorderDisabledBrush}"/>
+                            <Setter TargetName="ContentPresenter" Property="Opacity"
+                                    Value="{DynamicResource DefaultControlDisabledOpacity}"/>
+                            <Setter Property="Cursor" Value="Arrow"/>
+                        </Trigger>
+
+                        <!-- Disabled + Checked -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="CheckedOuterCircle" Property="Stroke"
+                                    Value="{DynamicResource AccentPrimaryDisabledBrush}"/>
+                            <Setter TargetName="InnerCircle" Property="Fill"
+                                    Value="{DynamicResource AccentPrimaryDisabledBrush}"/>
+                            <Setter TargetName="InnerCircle" Property="Opacity" Value="0.6"/>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButtonStyle}"/>
 </ResourceDictionary>
