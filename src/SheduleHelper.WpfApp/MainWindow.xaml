@@ -108,95 +108,56 @@
         <Grid Grid.Row="1">
             <!-- Main Content Area -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                <TextBlock Text="ComboBox Samples" FontSize="20" FontWeight="SemiBold"
+                <TextBlock Text="Text Input Samples" FontSize="20" FontWeight="SemiBold"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,20"/>
 
-                <!-- Basic ComboBox -->
-                <TextBlock Text="Basic ComboBox:" FontWeight="Medium"
+                <!-- Basic TextBox -->
+                <TextBlock Text="Basic TextBox:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,8"/>
-                <ComboBox x:Name="BasicComboBox" Width="300" Margin="0,4" SelectedIndex="0">
-                    <ComboBoxItem Content="Option 1"/>
-                    <ComboBoxItem Content="Option 2"/>
-                    <ComboBoxItem Content="Option 3"/>
-                    <ComboBoxItem Content="Option 4"/>
-                    <ComboBoxItem Content="Option 5"/>
-                </ComboBox>
+                <TextBox Width="300" Margin="0,4" Padding="0" Text="Sample text"/>
 
-                <!-- Country Selection -->
-                <TextBlock Text="Select Country:" FontWeight="Medium"
+                <!-- Placeholder TextBox (Empty) -->
+                <TextBlock Text="Empty TextBox:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ComboBox Width="300" Margin="0,4" SelectedIndex="2">
-                    <ComboBoxItem Content="🇺🇸 United States"/>
-                    <ComboBoxItem Content="🇬🇧 United Kingdom"/>
-                    <ComboBoxItem Content="🇨🇦 Canada"/>
-                    <ComboBoxItem Content="🇦🇺 Australia"/>
-                    <ComboBoxItem Content="🇩🇪 Germany"/>
-                    <ComboBoxItem Content="🇫🇷 France"/>
-                    <ComboBoxItem Content="🇯🇵 Japan"/>
-                </ComboBox>
+                <TextBox Width="300" Margin="0,4"/>
 
-                <!-- Font Size Selection -->
-                <TextBlock Text="Font Size:" FontWeight="Medium"
+                <!-- Multiline TextBox -->
+                <TextBlock Text="Multiline TextBox:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <Grid Width="300" Margin="0,4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Size:" Grid.Column="0"
-                               Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                               VerticalAlignment="Center" Margin="0,0,12,0"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="2">
-                        <ComboBoxItem Content="Small (12px)"/>
-                        <ComboBoxItem Content="Medium (14px)"/>
-                        <ComboBoxItem Content="Large (16px)"/>
-                        <ComboBoxItem Content="Extra Large (18px)"/>
-                    </ComboBox>
-                </Grid>
+                <TextBox Width="300" Height="80" Margin="0,4"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         VerticalScrollBarVisibility="Auto"
+                         Text="This is a multiline text box.&#x0a;You can type multiple lines here.&#x0a;Press Enter to add new lines."/>
 
-                <!-- Many Items (Scrollable) -->
-                <TextBlock Text="Long List (Scrollable):" FontWeight="Medium"
+                <!-- Email Input -->
+                <TextBlock Text="Email Address:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ComboBox Width="300" Margin="0,4" MaxDropDownHeight="200">
-                    <ComboBoxItem Content="Item 1"/>
-                    <ComboBoxItem Content="Item 2"/>
-                    <ComboBoxItem Content="Item 3"/>
-                    <ComboBoxItem Content="Item 4"/>
-                    <ComboBoxItem Content="Item 5"/>
-                    <ComboBoxItem Content="Item 6"/>
-                    <ComboBoxItem Content="Item 7"/>
-                    <ComboBoxItem Content="Item 8"/>
-                    <ComboBoxItem Content="Item 9"/>
-                    <ComboBoxItem Content="Item 10"/>
-                    <ComboBoxItem Content="Item 11"/>
-                    <ComboBoxItem Content="Item 12"/>
-                </ComboBox>
+                <TextBox Width="300" Margin="0,4" Text="user@example.com"/>
 
-                <!-- Editable ComboBox -->
-                <TextBlock Text="Editable ComboBox:" FontWeight="Medium"
+                <!-- Password Input -->
+                <TextBlock Text="Password:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ComboBox Width="300" Margin="0,4" IsEditable="True">
-                    <ComboBoxItem Content="Red"/>
-                    <ComboBoxItem Content="Green"/>
-                    <ComboBoxItem Content="Blue"/>
-                    <ComboBoxItem Content="Yellow"/>
-                </ComboBox>
+                <PasswordBox Width="300" Margin="0,4"/>
 
-                <!-- Disabled State -->
-                <TextBlock Text="Disabled State:" FontWeight="Medium"
+                <!-- Disabled TextBox -->
+                <TextBlock Text="Disabled TextBox:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ComboBox Width="300" Margin="0,4" IsEnabled="False" SelectedIndex="1">
-                    <ComboBoxItem Content="Disabled Option 1"/>
-                    <ComboBoxItem Content="Disabled Option 2"/>
-                    <ComboBoxItem Content="Disabled Option 3"/>
-                </ComboBox>
+                <TextBox Width="300" Margin="0,4" Text="Disabled input" IsEnabled="False"/>
+
+                <!-- Disabled PasswordBox -->
+                <TextBlock Text="Disabled PasswordBox:" FontWeight="Medium"
+                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                           Margin="0,20,0,8"/>
+                <PasswordBox Width="300" Margin="0,4" IsEnabled="False"/>
+
             </StackPanel>
 
             <!-- Theme Switch Button in Bottom-Right Corner -->
