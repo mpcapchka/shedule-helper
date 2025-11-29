@@ -312,6 +312,178 @@
     </Style>
 
     <!-- ================================================ -->
+    <!--   DEFAULT TOGGLEBUTTON STYLE                    -->
+    <!--   Material Design ToggleButton                   -->
+    <!-- ================================================ -->
+
+    <Style x:Key="DefaultToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+        <!-- Base Properties -->
+        <Setter Property="Foreground" Value="{DynamicResource DefaultControlForegroundDefaultBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource DefaultControlBackgroundDefaultBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DefaultControlBorderDefaultBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="16,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="MinWidth" Value="64"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True">
+
+                            <ContentPresenter x:Name="ContentPresenter"
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            RecognizesAccessKey="True"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+
+                        <Border x:Name="FocusBorder"
+                                BorderBrush="{DynamicResource AccentPrimaryBrush}"
+                                BorderThickness="2"
+                                CornerRadius="4"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                SnapsToDevicePixels="True"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Unchecked Hover State -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource DefaultControlBackgroundHoverBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource DefaultControlBorderHoverBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Unchecked Pressed State -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsPressed" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource DefaultControlBackgroundPressedBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource DefaultControlBorderPressedBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Checked State -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource PrimaryControlBackgroundDefaultBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource PrimaryControlBorderDefaultBrush}"/>
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource PrimaryControlForegroundDefaultBrush}"/>
+                        </Trigger>
+
+                        <!-- Checked Hover State -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource PrimaryControlBackgroundHoverBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource PrimaryControlBorderHoverBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Checked Pressed State -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsPressed" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource PrimaryControlBackgroundPressedBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource PrimaryControlBorderPressedBrush}"/>
+                        </MultiTrigger>
+
+                        <!-- Focus State -->
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="1"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="0"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Disabled State -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource DefaultControlBackgroundDisabledBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource DefaultControlBorderDisabledBrush}"/>
+                            <Setter TargetName="ContentPresenter" Property="Opacity"
+                                    Value="{DynamicResource DefaultControlDisabledOpacity}"/>
+                            <Setter Property="Cursor" Value="Arrow"/>
+                        </Trigger>
+
+                        <!-- Disabled Checked State -->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource PrimaryControlBackgroundDisabledBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource PrimaryControlBorderDisabledBrush}"/>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="ToggleButton" BasedOn="{StaticResource DefaultToggleButtonStyle}"/>
+
+    <!-- ================================================ -->
     <!--   DEFAULT CHECKBOX STYLE                        -->
     <!--   Material Design Checkbox                       -->
     <!-- ================================================ -->

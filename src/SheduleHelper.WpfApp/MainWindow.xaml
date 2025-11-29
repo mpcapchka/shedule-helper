@@ -108,82 +108,71 @@
         <Grid Grid.Row="1">
             <!-- Main Content Area -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                <TextBlock Text="Hyperlink Button Samples" FontSize="20" FontWeight="SemiBold"
+                <TextBlock Text="ToggleButton Samples" FontSize="20" FontWeight="SemiBold"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,20"/>
 
-                <!-- Basic Hyperlinks -->
-                <TextBlock Text="Basic Hyperlinks:" FontWeight="Medium"
+                <!-- Basic Toggle Buttons -->
+                <TextBlock Text="Basic Toggle Buttons:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,8"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="Click here to learn more"
-                        Margin="0,4"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="Visit our documentation"
-                        Margin="0,4"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="Go to settings"
-                        Margin="0,4"/>
+                <StackPanel Orientation="Horizontal" Margin="0,4">
+                    <ToggleButton Content="Unchecked" Margin="0,0,8,0" MinWidth="120"/>
+                    <ToggleButton Content="Checked" IsChecked="True" MinWidth="120"/>
+                </StackPanel>
 
-                <!-- Inline Hyperlinks in Text -->
-                <TextBlock Text="Inline Usage:" FontWeight="Medium"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,20,0,8"/>
-                <TextBlock TextWrapping="Wrap" Margin="0,4">
-                    <Run Text="You can use hyperlink buttons inline with text. For example, "
-                         Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"/>
-                    <InlineUIContainer>
-                        <Button Style="{StaticResource HyperlinkButtonStyle}"
-                                Content="click this link"
-                                Padding="0"
-                                Margin="0,-2,0,0"/>
-                    </InlineUIContainer>
-                    <Run Text=" to continue reading or "
-                         Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"/>
-                    <InlineUIContainer>
-                        <Button Style="{StaticResource HyperlinkButtonStyle}"
-                                Content="visit help center"
-                                Padding="0"
-                                Margin="0,-2,0,0"/>
-                    </InlineUIContainer>
-                    <Run Text=" for more information."
-                         Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"/>
-                </TextBlock>
-
-                <!-- Navigation Links -->
-                <TextBlock Text="Navigation Links:" FontWeight="Medium"
+                <!-- Toggle Button Group (Manual Exclusive Selection) -->
+                <TextBlock Text="View Mode Toggle Group:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
                 <StackPanel Orientation="Horizontal" Margin="0,4">
-                    <Button Style="{StaticResource HyperlinkButtonStyle}" Content="Home" Margin="0,0,16,0"/>
-                    <Button Style="{StaticResource HyperlinkButtonStyle}" Content="About" Margin="0,0,16,0"/>
-                    <Button Style="{StaticResource HyperlinkButtonStyle}" Content="Contact" Margin="0,0,16,0"/>
-                    <Button Style="{StaticResource HyperlinkButtonStyle}" Content="Help"/>
+                    <ToggleButton Content="📋 List" Margin="0,0,4,0" MinWidth="100" IsChecked="True"/>
+                    <ToggleButton Content="🔲 Grid" Margin="0,0,4,0" MinWidth="100"/>
+                    <ToggleButton Content="📊 Chart" MinWidth="100"/>
                 </StackPanel>
 
-                <!-- Disabled State -->
-                <TextBlock Text="Disabled State:" FontWeight="Medium"
+                <!-- Icon Toggle Buttons -->
+                <TextBlock Text="Formatting Toggle Buttons:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="This link is disabled"
-                        IsEnabled="False"
-                        Margin="0,4"/>
+                <StackPanel Orientation="Horizontal" Margin="0,4">
+                    <ToggleButton Content="B" FontWeight="Bold" Margin="0,0,4,0" MinWidth="40"/>
+                    <ToggleButton Content="I" FontStyle="Italic" Margin="0,0,4,0" MinWidth="40"/>
+                    <ToggleButton Content="U" Margin="0,0,4,0" MinWidth="40"/>
+                    <ToggleButton Content="S" MinWidth="40"/>
+                </StackPanel>
 
-                <!-- Action Links -->
-                <TextBlock Text="Action Links:" FontWeight="Medium"
+                <!-- Filter Toggles -->
+                <TextBlock Text="Filter Options:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="⚙ Open Settings"
-                        Margin="0,4"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="📄 View Documentation"
-                        Margin="0,4"/>
-                <Button Style="{StaticResource HyperlinkButtonStyle}"
-                        Content="🔗 Share Link"
-                        Margin="0,4"/>
+                <WrapPanel Margin="0,4">
+                    <ToggleButton Content="Active" Margin="0,0,8,8" MinWidth="80"/>
+                    <ToggleButton Content="Completed" IsChecked="True" Margin="0,0,8,8" MinWidth="80"/>
+                    <ToggleButton Content="Pending" Margin="0,0,8,8" MinWidth="80"/>
+                    <ToggleButton Content="Archived" Margin="0,0,8,8" MinWidth="80"/>
+                </WrapPanel>
+
+                <!-- Disabled States -->
+                <TextBlock Text="Disabled States:" FontWeight="Medium"
+                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                           Margin="0,20,0,8"/>
+                <StackPanel Orientation="Horizontal" Margin="0,4">
+                    <ToggleButton Content="Disabled Unchecked" IsEnabled="False" Margin="0,0,8,0" MinWidth="140"/>
+                    <ToggleButton Content="Disabled Checked" IsChecked="True" IsEnabled="False" MinWidth="140"/>
+                </StackPanel>
+
+                <!-- Interactive Toggle Example -->
+                <TextBlock Text="Interactive Example:" FontWeight="Medium"
+                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                           Margin="0,20,0,8"/>
+                <StackPanel Orientation="Horizontal" Margin="0,4">
+                    <ToggleButton x:Name="NotificationToggle" Content="🔔 Notifications" MinWidth="140" Margin="0,0,8,0"/>
+                    <TextBlock Text="(Try toggling this)"
+                               Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                               VerticalAlignment="Center"
+                               FontStyle="Italic"/>
+                </StackPanel>
             </StackPanel>
 
             <!-- Theme Switch Button in Bottom-Right Corner -->
