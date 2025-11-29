@@ -108,57 +108,89 @@
         <Grid Grid.Row="1">
             <!-- Main Content Area -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                <TextBlock Text="ProgressBar Samples" FontSize="20" FontWeight="SemiBold"
+                <TextBlock Text="ToolTip Samples" FontSize="20" FontWeight="SemiBold"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,20"/>
 
-                <!-- 25% Progress -->
-                <TextBlock Text="25% Progress:" FontWeight="Medium"
+                <!-- Simple ToolTip -->
+                <TextBlock Text="Simple ToolTip:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,0,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" Value="25" Maximum="100"/>
+                <Button Content="Hover over me" Width="300" Margin="0,4"
+                        ToolTip="This is a simple tooltip"/>
 
-                <!-- 50% Progress -->
-                <TextBlock Text="50% Progress:" FontWeight="Medium"
+                <!-- ToolTip with custom content -->
+                <TextBlock Text="ToolTip with Icon:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" Value="50" Maximum="100"/>
+                <Button Content="Information Button" Width="300" Margin="0,4">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="ℹ️" FontSize="14" Margin="0,0,6,0"/>
+                                <TextBlock Text="Click to view more details"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
-                <!-- 75% Progress -->
-                <TextBlock Text="75% Progress:" FontWeight="Medium"
+                <!-- Multiline ToolTip -->
+                <TextBlock Text="Multiline ToolTip:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" Value="75" Maximum="100"/>
+                <Button Content="Complex Information" Width="300" Margin="0,4">
+                    <Button.ToolTip>
+                        <ToolTip MaxWidth="250">
+                            <StackPanel>
+                                <TextBlock Text="User Information" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                                <TextBlock Text="Name: John Doe" Margin="0,2"/>
+                                <TextBlock Text="Email: john.doe@example.com" Margin="0,2"/>
+                                <TextBlock Text="Status: Active" Margin="0,2"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
-                <!-- 100% Progress (Complete) -->
-                <TextBlock Text="100% Progress (Complete):" FontWeight="Medium"
+                <!-- ToolTip on TextBox -->
+                <TextBlock Text="ToolTip on TextBox:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" Value="100" Maximum="100"/>
+                <TextBox Width="300" Margin="0,4" Text="Enter your name"
+                         ToolTip="Type your full name here"/>
 
-                <!-- Indeterminate Progress -->
-                <TextBlock Text="Indeterminate Progress:" FontWeight="Medium"
+                <!-- ToolTip on Disabled Control -->
+                <TextBlock Text="ToolTip on Disabled Control:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" IsIndeterminate="True"/>
+                <Button Content="Disabled Button" Width="300" Margin="0,4" IsEnabled="False"
+                        ToolTip="This action is currently unavailable"
+                        ToolTipService.ShowOnDisabled="True"/>
 
-                <!-- Thin Progress (Height 4) -->
-                <TextBlock Text="Thin Progress (4px height):" FontWeight="Medium"
+                <!-- ToolTip with Different Placement -->
+                <TextBlock Text="Bottom Placement ToolTip:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Height="4" Margin="0,4" Value="60" Maximum="100"/>
+                <Button Content="ToolTip Below" Width="300" Margin="0,4"
+                        ToolTip="This tooltip appears below the button"
+                        ToolTipService.Placement="Bottom"/>
 
-                <!-- Thick Progress (Height 16) -->
-                <TextBlock Text="Thick Progress (16px height):" FontWeight="Medium"
+                <!-- Rich Content ToolTip -->
+                <TextBlock Text="Rich Content ToolTip:" FontWeight="Medium"
                            Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                            Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Height="16" Margin="0,4" Value="40" Maximum="100"/>
-
-                <!-- Disabled Progress -->
-                <TextBlock Text="Disabled Progress:" FontWeight="Medium"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,20,0,8"/>
-                <ProgressBar Width="300" Margin="0,4" Value="65" Maximum="100" IsEnabled="False"/>
+                <Button Content="Feature Button" Width="300" Margin="0,4" Style="{StaticResource PrimaryButtonStyle}">
+                    <Button.ToolTip>
+                        <ToolTip MaxWidth="280">
+                            <StackPanel>
+                                <TextBlock Text="⚡ Premium Feature" FontWeight="Bold" FontSize="13" Margin="0,0,0,6"/>
+                                <TextBlock Text="This feature includes:" Margin="0,0,0,4"/>
+                                <TextBlock Text="• Advanced analytics dashboard" Margin="4,2"/>
+                                <TextBlock Text="• Export to multiple formats" Margin="4,2"/>
+                                <TextBlock Text="• Priority support" Margin="4,2"/>
+                            </StackPanel>
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
             </StackPanel>
 
