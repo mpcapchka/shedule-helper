@@ -105,37 +105,110 @@
         </Border>
 
         <!-- rest of UI -->
-        <Grid Grid.Row="1">
-            <!-- Main Content Area -->
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                <TextBlock Text="RadioButton Samples" FontSize="20" FontWeight="SemiBold"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,0,0,20"/>
+        <Grid Grid.Row="1" Margin="20">
+            <!-- Main Content Area with ScrollViewer -->
+            <Border Background="{DynamicResource LayerBackgroundSubtleBrush}"
+                    BorderBrush="{DynamicResource LayerBorderDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="16">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <!-- Group 1: Basic RadioButtons -->
-                <TextBlock Text="Choose your favorite color:" FontWeight="Medium"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,0,0,8"/>
-                <RadioButton Content="Red" GroupName="Colors" Margin="0,4"/>
-                <RadioButton Content="Green" GroupName="Colors" IsChecked="True" Margin="0,4"/>
-                <RadioButton Content="Blue" GroupName="Colors" Margin="0,4"/>
-                <RadioButton Content="Yellow" GroupName="Colors" Margin="0,4"/>
+                    <!-- Header -->
+                    <TextBlock Text="ScrollBar Demo" FontSize="20" FontWeight="SemiBold"
+                               Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                               Margin="0,0,0,12"/>
 
-                <!-- Group 2: Size Options -->
-                <TextBlock Text="Select size:" FontWeight="Medium"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,20,0,8"/>
-                <RadioButton Content="Small" GroupName="Size" Margin="0,4"/>
-                <RadioButton Content="Medium" GroupName="Size" IsChecked="True" Margin="0,4"/>
-                <RadioButton Content="Large" GroupName="Size" Margin="0,4"/>
+                    <!-- ScrollViewer with Custom Style -->
+                    <ScrollViewer Grid.Row="1"
+                                  Style="{StaticResource DefaultScrollViewerStyle}"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="Vertical Scrolling Content" FontSize="16" FontWeight="Medium"
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       Margin="0,0,0,12"/>
 
-                <!-- Group 3: Disabled Options -->
-                <TextBlock Text="Disabled states:" FontWeight="Medium"
-                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                           Margin="0,20,0,8"/>
-                <RadioButton Content="Disabled Unchecked" GroupName="Disabled" IsEnabled="False" Margin="0,4"/>
-                <RadioButton Content="Disabled Checked" GroupName="Disabled" IsChecked="True" IsEnabled="False" Margin="0,4"/>
-            </StackPanel>
+                            <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,16"/>
+
+                            <!-- Horizontal Scrolling Content -->
+                            <TextBlock Text="Horizontal Scrolling Content" FontSize="16" FontWeight="Medium"
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       Margin="0,0,0,12"/>
+
+                            <Border Background="{DynamicResource LayerBackgroundElevatedBrush}"
+                                    BorderBrush="{DynamicResource LayerBorderSubtleBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="4"
+                                    Padding="12"
+                                    Margin="0,0,0,16">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Button 1" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 2" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 3" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 4" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 5" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 6" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 7" Margin="0,0,8,0" MinWidth="100"/>
+                                    <Button Content="Button 8" MinWidth="100"/>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- More Vertical Content -->
+                            <TextBlock Text="Additional Content" FontSize="16" FontWeight="Medium"
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       Margin="0,0,0,12"/>
+
+                            <TextBlock Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+
+                            <TextBlock Text="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti."
+                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
+                                       TextWrapping="Wrap"
+                                       Margin="0,0,0,8"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
 
             <!-- Theme Switch Button in Bottom-Right Corner -->
             <Button x:Name="SwitchThemeButton"
@@ -143,7 +216,7 @@
                     Click="SwitchThemeButton_Click"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
-                    Margin="16"/>
+                    Margin="0,0,0,0"/>
         </Grid>
     </Grid>
 </Window>
