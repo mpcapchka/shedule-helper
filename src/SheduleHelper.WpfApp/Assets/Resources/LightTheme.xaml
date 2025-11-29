@@ -4,5 +4,6 @@
         <ResourceDictionary Source="/Assets/Resources/LightPalette.xaml"/>
         <ResourceDictionary Source="/Assets/Resources/DefaultControlStyles.xaml"/>
         <ResourceDictionary Source="/Assets/Resources/TextStyles.xaml"/>
+        <ResourceDictionary Source="/Assets/Resources/StatusStyles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
