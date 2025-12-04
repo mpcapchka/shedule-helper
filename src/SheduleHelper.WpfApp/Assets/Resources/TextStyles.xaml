@@ -1,0 +1,229 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ================================================ -->
+    <!--   DEFAULT TEXTBOX STYLE                         -->
+    <!--   Material Design TextBox                        -->
+    <!-- ================================================ -->
+
+    <Style x:Key="DefaultTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Background" Value="{DynamicResource InputControlBackgroundDefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource InputControlForegroundDefaultBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputControlBorderDefaultBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource AccentPrimaryBrush}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource AccentPrimaryBrush}"/>
+        <Setter Property="SelectionOpacity" Value="0.4"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Grid>
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                        Margin="{TemplateBinding Padding}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Focusable="False"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                        <!-- Focus Border -->
+                        <Border x:Name="FocusBorder"
+                                BorderBrush="{DynamicResource AccentPrimaryBrush}"
+                                BorderThickness="2"
+                                CornerRadius="4"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                SnapsToDevicePixels="True"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource InputControlBackgroundHoverBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource InputControlBorderHoverBrush}"/>
+                        </Trigger>
+
+                        <!-- Focus State -->
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="1"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="0"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Disabled State -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource InputControlBackgroundDisabledBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource InputControlBorderDisabledBrush}"/>
+                            <Setter TargetName="PART_ContentHost" Property="Opacity"
+                                    Value="{DynamicResource InputControlDisabledOpacity}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TextBox" BasedOn="{StaticResource DefaultTextBoxStyle}"/>
+
+    <!-- ================================================ -->
+    <!--   DEFAULT PASSWORDBOX STYLE                     -->
+    <!--   Material Design PasswordBox                    -->
+    <!-- ================================================ -->
+
+    <Style x:Key="DefaultPasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Background" Value="{DynamicResource InputControlBackgroundDefaultBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource InputControlForegroundDefaultBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource InputControlBorderDefaultBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="MinHeight" Value="36"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource AccentPrimaryBrush}"/>
+        <Setter Property="SelectionBrush" Value="{DynamicResource AccentPrimaryBrush}"/>
+        <Setter Property="SelectionOpacity" Value="0.4"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="PasswordChar" Value="●"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Grid>
+                        <Border x:Name="MainBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4"
+                                SnapsToDevicePixels="True">
+
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                        Margin="{TemplateBinding Padding}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        Focusable="False"
+                                        HorizontalScrollBarVisibility="Hidden"
+                                        VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+
+                        <!-- Focus Border -->
+                        <Border x:Name="FocusBorder"
+                                BorderBrush="{DynamicResource AccentPrimaryBrush}"
+                                BorderThickness="2"
+                                CornerRadius="4"
+                                Opacity="0"
+                                IsHitTestVisible="False"
+                                SnapsToDevicePixels="True"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- Hover State -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource InputControlBackgroundHoverBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource InputControlBorderHoverBrush}"/>
+                        </Trigger>
+
+                        <!-- Focus State -->
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="1"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="FocusBorder"
+                                                       Storyboard.TargetProperty="Opacity"
+                                                       To="0"
+                                                       Duration="0:0:0.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Disabled State -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="MainBorder" Property="Background"
+                                    Value="{DynamicResource InputControlBackgroundDisabledBrush}"/>
+                            <Setter TargetName="MainBorder" Property="BorderBrush"
+                                    Value="{DynamicResource InputControlBorderDisabledBrush}"/>
+                            <Setter TargetName="PART_ContentHost" Property="Opacity"
+                                    Value="{DynamicResource InputControlDisabledOpacity}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource DefaultPasswordBoxStyle}"/>
+
+</ResourceDictionary>
