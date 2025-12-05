@@ -25,6 +25,31 @@ namespace SheduleHelper.WpfApp
         #endregion
 
         #region Handlers
+
+        private void MainNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ListBox listBox && listBox.SelectedIndex >= 0)
+            {
+                // Map MainNavigation index to TabControl index (0->0, 1->1, 2->2)
+                TabControl_Main.SelectedIndex = listBox.SelectedIndex;
+
+                // Clear BottomNavigation selection
+                BottomNavigation.SelectedIndex = -1;
+            }
+        }
+
+        private void BottomNavigation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender is ListBox listBox && listBox.SelectedIndex >= 0)
+            {
+                // Settings is at index 3 in the TabControl (0: Dashboard, 1: Schedule, 2: Tasks, 3: Settings)
+                TabControl_Main.SelectedIndex = 3;
+
+                // Clear MainNavigation selection
+                MainNavigation.SelectedIndex = -1;
+            }
+        }
+
         private void SwitchThemeButton_Click(object sender, RoutedEventArgs e)
         {
                 // 1. Capture current visual as bitmap

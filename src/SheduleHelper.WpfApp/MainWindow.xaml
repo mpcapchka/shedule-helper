@@ -3,232 +3,68 @@
                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:view="clr-namespace:SheduleHelper.WpfApp.View"
                        xmlns:controls="clr-namespace:SheduleHelper.WpfApp.Controls"
                        mc:Ignorable="d" Style="{StaticResource DefaultCustomWindowStyle}"
                        Title="Schedule Helper" Height="450" Width="800">
 
     <Grid Margin="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" MinWidth="240" MaxWidth="360"/>
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Border x:Name="Sidebar_Border" Grid.Column="0">
-            <ListBox>
-                
-            </ListBox>
+        <Border x:Name="Sidebar_Border" Grid.Column="0" HorizontalAlignment="Stretch"
+                Background="{DynamicResource LayerBackgroundFloatingBrush}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Top items to navigate (main tabs) -->
+                <ListBox x:Name="MainNavigation"
+                         Grid.Row="1"
+                         Style="{StaticResource NavigationListBoxStyle}"
+                         ItemContainerStyle="{StaticResource NavigationListBoxItemStyle}"
+                         SelectionChanged="MainNavigation_SelectionChanged"
+                         Padding="8">
+                    <ListBoxItem Content="Dashboard"/>
+                    <ListBoxItem Content="Schedule"/>
+                    <ListBoxItem Content="Tasks"/>
+                </ListBox>
+
+                <!-- Bottom items to navigate (settings) -->
+                <ListBox x:Name="BottomNavigation"
+                         Grid.Row="2"
+                         Style="{StaticResource NavigationListBoxStyle}"
+                         ItemContainerStyle="{StaticResource NavigationListBoxItemStyle}"
+                         SelectionChanged="BottomNavigation_SelectionChanged"
+                         Padding="8">
+                    <ListBoxItem Content="Settings"/>
+                </ListBox>
+            </Grid>
         </Border>
 
-        <!-- TabControl Demo -->
-        <!--<TabControl Style="{StaticResource DefaultTabControlStyle}">
+        <GridSplitter Grid.Column="1" Width="5" ResizeBehavior="PreviousAndCurrent" ResizeDirection="Columns"/>
 
-                -->
-        <!-- Tab 1: Overview -->
-        <!--
-                <TabItem Header="Overview">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="20">
-                            <TextBlock Text="TabControl Overview"
-                                       FontSize="24"
-                                       FontWeight="SemiBold"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,16"/>
-
-                            <TextBlock Text="This is a custom-styled TabControl demonstrating Material Design principles."
-                                       FontSize="14"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       TextWrapping="Wrap"
-                                       Margin="0,0,0,12"/>
-
-                            <TextBlock Text="Features:"
-                                       FontSize="16"
-                                       FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,12,0,8"/>
-
-                            <StackPanel Margin="20,0,0,0">
-                                <TextBlock Text="• Clean, modern tab headers with hover effects"
-                                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                           Margin="0,4"/>
-                                <TextBlock Text="• Active tab indicator with accent color"
-                                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                           Margin="0,4"/>
-                                <TextBlock Text="• Smooth transitions and animations"
-                                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                           Margin="0,4"/>
-                                <TextBlock Text="• Supports different TabStripPlacement options"
-                                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                           Margin="0,4"/>
-                                <TextBlock Text="• Consistent with application theme"
-                                           Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                           Margin="0,4"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </ScrollViewer>
-                </TabItem>
-
-                -->
-        <!-- Tab 2: Controls Demo -->
-        <!--
-                <TabItem Header="Controls">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="20">
-                            <TextBlock Text="Control Samples"
-                                       FontSize="24"
-                                       FontWeight="SemiBold"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,20"/>
-
-                            -->
-        <!-- Buttons -->
-        <!--
-                            <TextBlock Text="Buttons:" FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,8"/>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
-                                <Button Content="Default Button" Margin="0,0,8,0"/>
-                                <Button Content="Primary Button" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,8,0"/>
-                                <Button Content="Disabled" IsEnabled="False"/>
-                            </StackPanel>
-
-                            -->
-        <!-- CheckBoxes -->
-        <!--
-                            <TextBlock Text="CheckBoxes:" FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,8"/>
-                            <StackPanel Margin="0,0,0,20">
-                                <CheckBox Content="Option 1" IsChecked="True" Margin="0,4"/>
-                                <CheckBox Content="Option 2" Margin="0,4"/>
-                                <CheckBox Content="Disabled" IsEnabled="False" Margin="0,4"/>
-                            </StackPanel>
-
-                            -->
-        <!-- RadioButtons -->
-        <!--
-                            <TextBlock Text="RadioButtons:" FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,8"/>
-                            <StackPanel Margin="0,0,0,20">
-                                <RadioButton Content="Choice A" IsChecked="True" Margin="0,4" GroupName="Demo"/>
-                                <RadioButton Content="Choice B" Margin="0,4" GroupName="Demo"/>
-                                <RadioButton Content="Choice C" Margin="0,4" GroupName="Demo"/>
-                            </StackPanel>
-
-                            -->
-        <!-- Slider -->
-        <!--
-                            <TextBlock Text="Slider:" FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,8"/>
-                            <Slider Minimum="0" Maximum="100" Value="50" Width="300"
-                                    HorizontalAlignment="Left" Margin="0,0,0,20"/>
-
-                            -->
-        <!-- ComboBox -->
-        <!--
-                            <TextBlock Text="ComboBox:" FontWeight="Medium"
-                                       Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                       Margin="0,0,0,8"/>
-                            <ComboBox Width="300" HorizontalAlignment="Left" SelectedIndex="0">
-                                <ComboBoxItem Content="Option 1"/>
-                                <ComboBoxItem Content="Option 2"/>
-                                <ComboBoxItem Content="Option 3"/>
-                                <ComboBoxItem Content="Option 4"/>
-                            </ComboBox>
-                        </StackPanel>
-                    </ScrollViewer>
-                </TabItem>
-
-                -->
-        <!-- Tab 3: Settings -->
-        <!--
-                <TabItem Header="Settings">
-                    <StackPanel Margin="20">
-                        <TextBlock Text="Application Settings"
-                                   FontSize="24"
-                                   FontWeight="SemiBold"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   Margin="0,0,0,20"/>
-
-                        <TextBlock Text="Theme:" FontWeight="Medium"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   Margin="0,0,0,8"/>
-                        <Button x:Name="SwitchThemeButtonInTab"
-                                Content="Switch Theme"
-                                Click="SwitchThemeButton_Click"
-                                HorizontalAlignment="Left"
-                                Margin="0,0,0,20"/>
-
-                        <TextBlock Text="Notifications:" FontWeight="Medium"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   Margin="0,0,0,8"/>
-                        <CheckBox Content="Enable desktop notifications" IsChecked="True" Margin="0,4"/>
-                        <CheckBox Content="Enable sound alerts" IsChecked="False" Margin="0,4"/>
-
-                        <TextBlock Text="Language:" FontWeight="Medium"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   Margin="0,20,0,8"/>
-                        <ComboBox Width="200" HorizontalAlignment="Left" SelectedIndex="0">
-                            <ComboBoxItem Content="English"/>
-                            <ComboBoxItem Content="Spanish"/>
-                            <ComboBoxItem Content="French"/>
-                            <ComboBoxItem Content="German"/>
-                        </ComboBox>
-                    </StackPanel>
-                </TabItem>
-
-                -->
-        <!-- Tab 4: About -->
-        <!--
-                <TabItem Header="About">
-                    <StackPanel Margin="20" VerticalAlignment="Center">
-                        <TextBlock Text="Schedule Helper"
-                                   FontSize="28"
-                                   FontWeight="Bold"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,0,0,12"/>
-
-                        <TextBlock Text="Version 1.0.0"
-                                   FontSize="14"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   HorizontalAlignment="Center"
-                                   Margin="0,0,0,24"/>
-
-                        <TextBlock Text="A modern WPF application demonstrating Material Design principles and custom control styling."
-                                   FontSize="14"
-                                   Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center"
-                                   MaxWidth="400"
-                                   Margin="0,0,0,24"/>
-
-                        <Button Content="Visit GitHub"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                                HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </TabItem>
-
-                -->
-        <!-- Tab 5: Disabled Example -->
-        <!--
-                <TabItem Header="Disabled" IsEnabled="False">
-                    <TextBlock Text="This tab is disabled"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </TabItem>
-
-            </TabControl>-->
-
-        <!-- Theme Switch Button in Bottom-Right Corner -->
-        <!--<Button x:Name="SwitchThemeButton"
-                Content="Switch Theme"
-                Click="SwitchThemeButton_Click"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Right"
-                Margin="0,0,0,0"
-                Panel.ZIndex="100"/>-->
+        <TabControl x:Name="TabControl_Main"
+                    Grid.Column="2"
+                    Style="{StaticResource HeaderlessTabControlStyle}">
+            <TabItem>
+                <view:DashboardTab/>
+            </TabItem>
+            <TabItem>
+                <view:SheduleTab/>
+            </TabItem>
+            <TabItem>
+                <view:TasksTab/>
+            </TabItem>
+            <TabItem>
+                <view:SettingsTab/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </controls:CustomWindow>
