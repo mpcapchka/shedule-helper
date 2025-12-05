@@ -7,16 +7,25 @@
                        mc:Ignorable="d" Style="{StaticResource DefaultCustomWindowStyle}"
                        Title="Schedule Helper" Height="450" Width="800">
 
-    <Grid Margin="0" Background="Red">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <!-- TabControl Demo -->
-            <!--<TabControl Style="{StaticResource DefaultTabControlStyle}">
+        <Border x:Name="Sidebar_Border" Grid.Column="0">
+            <ListBox>
+                
+            </ListBox>
+        </Border>
 
-                --><!-- Tab 1: Overview --><!--
+        <!-- TabControl Demo -->
+        <!--<TabControl Style="{StaticResource DefaultTabControlStyle}">
+
+                -->
+        <!-- Tab 1: Overview -->
+        <!--
                 <TabItem Header="Overview">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="20">
@@ -59,7 +68,9 @@
                     </ScrollViewer>
                 </TabItem>
 
-                --><!-- Tab 2: Controls Demo --><!--
+                -->
+        <!-- Tab 2: Controls Demo -->
+        <!--
                 <TabItem Header="Controls">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="20">
@@ -69,7 +80,9 @@
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,20"/>
 
-                            --><!-- Buttons --><!--
+                            -->
+        <!-- Buttons -->
+        <!--
                             <TextBlock Text="Buttons:" FontWeight="Medium"
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,8"/>
@@ -79,7 +92,9 @@
                                 <Button Content="Disabled" IsEnabled="False"/>
                             </StackPanel>
 
-                            --><!-- CheckBoxes --><!--
+                            -->
+        <!-- CheckBoxes -->
+        <!--
                             <TextBlock Text="CheckBoxes:" FontWeight="Medium"
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,8"/>
@@ -89,7 +104,9 @@
                                 <CheckBox Content="Disabled" IsEnabled="False" Margin="0,4"/>
                             </StackPanel>
 
-                            --><!-- RadioButtons --><!--
+                            -->
+        <!-- RadioButtons -->
+        <!--
                             <TextBlock Text="RadioButtons:" FontWeight="Medium"
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,8"/>
@@ -99,14 +116,18 @@
                                 <RadioButton Content="Choice C" Margin="0,4" GroupName="Demo"/>
                             </StackPanel>
 
-                            --><!-- Slider --><!--
+                            -->
+        <!-- Slider -->
+        <!--
                             <TextBlock Text="Slider:" FontWeight="Medium"
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,8"/>
                             <Slider Minimum="0" Maximum="100" Value="50" Width="300"
                                     HorizontalAlignment="Left" Margin="0,0,0,20"/>
 
-                            --><!-- ComboBox --><!--
+                            -->
+        <!-- ComboBox -->
+        <!--
                             <TextBlock Text="ComboBox:" FontWeight="Medium"
                                        Foreground="{DynamicResource DefaultControlForegroundDefaultBrush}"
                                        Margin="0,0,0,8"/>
@@ -120,7 +141,9 @@
                     </ScrollViewer>
                 </TabItem>
 
-                --><!-- Tab 3: Settings --><!--
+                -->
+        <!-- Tab 3: Settings -->
+        <!--
                 <TabItem Header="Settings">
                     <StackPanel Margin="20">
                         <TextBlock Text="Application Settings"
@@ -156,7 +179,9 @@
                     </StackPanel>
                 </TabItem>
 
-                --><!-- Tab 4: About --><!--
+                -->
+        <!-- Tab 4: About -->
+        <!--
                 <TabItem Header="About">
                     <StackPanel Margin="20" VerticalAlignment="Center">
                         <TextBlock Text="Schedule Helper"
@@ -186,7 +211,9 @@
                     </StackPanel>
                 </TabItem>
 
-                --><!-- Tab 5: Disabled Example --><!--
+                -->
+        <!-- Tab 5: Disabled Example -->
+        <!--
                 <TabItem Header="Disabled" IsEnabled="False">
                     <TextBlock Text="This tab is disabled"
                                HorizontalAlignment="Center"
