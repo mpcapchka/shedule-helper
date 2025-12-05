@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SheduleHelper.WpfApp.Services;
+using SheduleHelper.WpfApp.ViewModel;
 using System.IO.Abstractions;
 using System.Windows;
 using System.Windows.Media;
@@ -44,6 +45,11 @@ namespace SheduleHelper.WpfApp
 
             services.AddSingleton<IFileSystem, FileSystem>();
             services.AddSingleton<LoggingService>();
+
+            services.AddSingleton<SettingsTabViewModel>();
+            services.AddSingleton<SheduleTabViewModel>();
+            services.AddSingleton<DashboardTabViewModel>();
+            services.AddSingleton<TasksTabViewModel>();
 
             return services.BuildServiceProvider();
         }
