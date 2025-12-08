@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace SheduleHelper.WpfApp.ViewModel
 {
-    internal class MainWindowViewModel
+    public partial class MainWindowViewModel : ObservableObject
     {
+        #region Constructors
+        public MainWindowViewModel()
+        {
+            Tabs = new ObservableCollection<ITabViewModel>()
+            {
+
+            };
+        }
+        #endregion
+
+        #region Properties
+        public ObservableCollection<ITabViewModel> Tabs { get; } = new();
+        #endregion
+
+        #region Methods
+
+        #endregion
     }
 }
